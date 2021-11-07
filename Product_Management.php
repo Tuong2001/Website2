@@ -26,7 +26,7 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
             if(isset($_GET["id"]))
             {
                 $id = $_GET["id"];
-                mysqli_query($conn, "DELETE FROM product Where Product_ID='$id'");
+                pg_query($conn, "DELETE FROM product Where Product_ID='$id'");
             }
         }
     ?>
@@ -55,9 +55,9 @@ if(isset($_SESSION['admin']) && $_SESSION['admin']==1)
             <?php
                 include_once("connection.php"); 
                 $No = 1;
-                $result = mysqli_query($conn, "SELECT  Product_ID, Product_Name, Price, Pro_qty, Pro_image, Cat_Name FROM product a, category b
+                $result = pg_query($conn, "SELECT  Product_ID, Product_Name, Price, Pro_qty, Pro_image, Cat_Name FROM product a, category b
                 Where a.Cat_ID = b.Cat_ID ORDER BY ProDate DESC");
-                while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+                while($row=pg_fetch_array($result, PGSQL_ASSOC))
                 {
 			?>
 			<tr>

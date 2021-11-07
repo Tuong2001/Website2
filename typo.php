@@ -144,7 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             if(isset($_GET["id"]))
             {
                 $id = $_GET["id"];
-                mysqli_query($conn, "DELETE FROM category Where Cat_ID='$id'");
+                pg_query($conn, "DELETE FROM category Where Cat_ID='$id'");
             }
         }
     ?>
@@ -167,8 +167,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<tbody>
             <?php
                 $No = 1;
-                $result = mysqli_query($conn, "SELECT * FROM category");
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+                $result = pg_query($conn, "SELECT * FROM category");
+                while($row = pg_fetch_array($result, PGSQL_ASSOC))
                 {
             ?>   
 			<tr>
@@ -229,9 +229,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<?php
 		include_once("connection.php"); 
 		$No = 1;
-		$result = mysqli_query($conn, "SELECT  Product_ID, Product_Name, Price, Pro_qty, Pro_image, Cat_Name FROM product a, category b
+		$result = pg_query($conn, "SELECT  Product_ID, Product_Name, Price, Pro_qty, Pro_image, Cat_Name FROM product a, category b
 		Where a.Cat_ID = b.Cat_ID ORDER BY ProDate DESC");
-		while($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+		while($row=pg_fetch_array($result, PGSQL_ASSOC))
 		{
 	?>
 	<tr>
