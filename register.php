@@ -212,11 +212,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         {
             include_once("connection.php");
             $pass = md5($pass1);
-            $sq = "SELECT * FROM customer WHERE Username='$us'OR email='$email'";
+            $sq = "SELECT * FROM customer WHERE username='$us'OR email='$email'";
             $res = pg_query($conn, $sq) or die(pg_error($conn));
             if(pg_num_rows($res)==0)
             {
-                pg_query($conn, "INSERT INTO customer (Username, Password, CustName, gender, Address, telephone, email, CusDate, CusMonth, CusYear, SSN, ActiveCode, state) 
+                pg_query($conn, "INSERT INTO customer (username, password, custName, gender, address, telephone, email, cusdate, cusmonth, cusyear, SSN, activecode, state) 
                 VALUE ('$us','$pass','$fullname', '$sex', '$address','$tel','$email','$date','$month','$year','','','0')") or die(pg_error($conn)); 
                 echo"You have registered successfully";
             }
